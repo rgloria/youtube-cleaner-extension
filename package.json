@@ -1,0 +1,10 @@
+{
+  "name": "youtube-cleaner-extension",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension that unsubscribes from every YouTube channel and removes saved playlists.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.mjs"
+  }
+}

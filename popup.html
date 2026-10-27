@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>YouTube Cleaner</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon32.png" alt="" width="20" height="20">
+    <h1>YouTube Cleaner</h1>
+    <span id="version" class="muted"></span>
+  </header>
+
+  <section id="setup">
+    <p class="muted">Runs in a new YouTube tab. You must be signed in to YouTube in this Chrome profile.</p>
+
+    <label class="opt"><input type="checkbox" id="opt-unsubscribe" checked>
+      <span><strong>Unsubscribe from all channels</strong></span></label>
+    <label class="opt"><input type="checkbox" id="opt-unlike" checked>
+      <span><strong>Unlike all videos</strong><br><small class="muted">Removes every video from your Liked videos list.</small></span></label>
+    <label class="opt"><input type="checkbox" id="opt-builtin" checked>
+      <span><strong>Empty Watch later, Saved Shorts and Sounds</strong><br><small class="muted">These built-in lists cannot be deleted, so every item in them is removed instead.</small></span></label>
+    <label class="opt"><input type="checkbox" id="opt-saved" checked>
+      <span><strong>Remove all saved playlists</strong><br><small class="muted">Other people's playlists you saved to your library.</small></span></label>
+    <label class="opt danger"><input type="checkbox" id="opt-own">
+      <span><strong>Also delete playlists I created</strong><br><small>Permanent. Cannot be undone.</small></span></label>
+    <label class="opt"><input type="checkbox" id="opt-dry" checked>
+      <span><strong>Dry run</strong><br><small class="muted">Only look and report what would happen. Change nothing. Do this first.</small></span></label>
+
+    <details>
+      <summary>Advanced</summary>
+      <label class="num">Pause between items (ms) <input type="number" id="opt-delay" min="0" step="100" value="700"></label>
+      <label class="num">Stop after this many items per task (0 = no limit) <input type="number" id="opt-max" min="0" step="1" value="0"></label>
+      <label class="num">Only items whose name or ID contains (comma-separated) <input type="text" id="opt-only" placeholder="leave empty for all"></label>
+    </details>
+
+    <label class="opt confirm" id="confirm-row" hidden><input type="checkbox" id="opt-confirm">
+      <span>I understand these changes are permanent.</span></label>
+
+    <button id="start" class="primary">Start</button>
+    <p id="setup-error" class="error" hidden></p>
+  </section>
+
+  <section id="status" hidden>
+    <div id="state-line" class="state"></div>
+    <div id="current" class="muted"></div>
+    <div id="results"></div>
+    <pre id="log"></pre>
+    <div class="row">
+      <button id="stop" class="danger-btn">Stop</button>
+      <button id="reset" class="secondary">Clear</button>
+    </div>
+  </section>
+</body>
+<script src="popup.js"></script>
+</html>
